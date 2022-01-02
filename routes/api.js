@@ -16,7 +16,9 @@ router.post('/todos', function(req, res, next){
 
 // update a ninja in the db
 router.put('/todos/:id', function(req, res, next){
-    res.send({ type:'PUT' });
+    Todo.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function(todo){
+        res.send(todo);
+    });
 });
 
 // delete a todo from the db
