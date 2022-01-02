@@ -3,8 +3,10 @@ const router = express.Router();
 const Todo = require('../models/todo');
 
 // get a list of todos from the db
-router.get('/todos', function(req, res, next){
-    res.send({ type:'GET' });
+router.get('/todos/:id', function(req, res, next){
+    Todo.findById({ _id: req.params.id }).then(function(todo){
+        res.send(todo);
+    });
 });
 
 // add a new todo to the db
