@@ -9,7 +9,7 @@
     <body>
         <h1 class="title">EuTodo</h1>
         <div id="homepage">
-            <h1>Add Your ToDo List!</h1>
+            <h1>Find Your ToDo List!</h1>
             <div id="todos"></div>
         </div>
 
@@ -44,7 +44,7 @@
                         <div id="todo-container">
                             <form id="search" onSubmit={ this.handleSubmit }>
                                 <label>Enter your ToDo ID : </label>
-                                <input type="text" ref="id" placeholder="aidi" required/>
+                                <input type="text" ref="id" placeholder="id" required/>
                                 <input type="submit" value="Find Todos"/>
                             </form>
                             <ul>{ todos }</ul>
