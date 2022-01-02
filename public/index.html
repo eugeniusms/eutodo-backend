@@ -16,5 +16,57 @@
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
         <script src="https://unpkg.com/react@15/dist/react.js"></script>
         <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+
+        <!-- Create React Component -->
+        <script type="text/babel">
+
+            var Todos = React.createClass({
+                getInitialState: function(){
+                    return({
+                        todos: []
+                    });
+                },
+                render: function(){
+                    var todos = this.state.todos
+                    todos = todos.map(function(todo, index){
+                        return(
+                            <li key={index}>
+                                <span className={ todo.obj.available }></span>
+                                <span className="title">{ todo.obj.title }</span>
+                                <span className="category">{ todo.obj.category }</span>
+                                <span className="time">{ todo.obj.time }</span>
+                                <span className="progress">{ todo.obj.progress }</span>
+                                <span className="completed">{ todo.obj.completed }</span>
+                            </li>
+                        )
+                    })
+                    return(
+                        <div id="todo-container">
+                            <form id="search" onSubmit={ this.handleSubmit }>
+                                <label>Enter your ToDo ID : </label>
+                                <input type="text" ref="id" placeholder="id" required/>
+                                <input type="submit" value="Find Todos"/>
+                            </form>
+                            <ul>{ todos }</ul>
+                        </div>
+                    );
+                },
+                handleSubmit: function (e){
+                    e.preventDefault();
+                    var id = this.refs.id.value;
+
+                    fetch('/api/todos/' + id).then(function(data){
+                        return data.json();
+                    }).then( json => {
+                        this.setState({
+                            todos: json
+                        })
+                    } );
+                }
+            });
+
+            ReactDOM.render(<Todos />, document.getElementById("todos"));
+
+            </script>
     </body>
 </html>
