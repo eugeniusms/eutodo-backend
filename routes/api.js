@@ -21,7 +21,9 @@ router.put('/todos/:id', function(req, res, next){
 
 // delete a todo from the db
 router.delete('/todos/:id', function(req, res, next){
-    res.send({ type:'DELETE' });
+    Todo.findByIdAndRemove({ _id: req.params.id }).then(function(todo){
+        res.send(todo);
+    });
 });
 
 module.exports = router;
