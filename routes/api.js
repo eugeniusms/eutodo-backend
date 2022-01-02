@@ -8,7 +8,15 @@ router.get('/todos', function(req, res){
 
 // add a new todo to the db
 router.post('/todos', function(req, res){
-    res.send({ type:'POST' });
+    console.log(req.body);
+    res.send({ 
+        type:'POST',
+        title: req.body.title,
+        category: req.body.category,
+        time: req.body.time,
+        progress: req.body.progress,
+        completed: req.body.completed
+     });
 });
 
 // update a ninja in the db
