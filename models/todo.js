@@ -17,7 +17,8 @@ const TodoSchema = new Schema({
         type: String
     },
     completed: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     available: {
         type: Boolean,
