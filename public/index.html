@@ -44,7 +44,7 @@
                         <div id="todo-container">
                             <form id="search" onSubmit={ this.handleSubmit }>
                                 <label>Enter your ToDo ID : </label>
-                                <input type="text" ref="id" placeholder="id" required/>
+                                <input type="text" ref="id" placeholder="aidi" required/>
                                 <input type="submit" value="Find Todos"/>
                             </form>
                             <ul>{ todos }</ul>
@@ -55,7 +55,7 @@
                     e.preventDefault();
                     var id = this.refs.id.value;
 
-                    fetch('/api/todos/' + id).then(function(data){
+                    fetch('/api/todos' + id).then(function(data){
                         return data.json();
                     }).then( json => {
                         this.setState({
